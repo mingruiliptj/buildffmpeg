@@ -25,4 +25,5 @@ ENV TZ=Asia/Tokyo
 WORKDIR /tmp/
 RUN apt-get update -y && apt-get install -y libx264-dev libx265-dev libxvidcore-dev libjpeg-dev
 COPY --from=0 /root/bin/ /usr/local/bin/
+COPY fstatic /usr/local/bin/
 CMD ["/bin/bash"]
