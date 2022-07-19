@@ -15,3 +15,13 @@ ADD ff.tar.gz ./
 ADD nvcodec.tar.gz ./
 ADD build-ffmpeg.sh build-ffmpeg.sh
 RUN ./build-ffmpeg.sh
+
+# runnnn
+
+FROM nvidia/cuda:11.7.0-runtime-ubuntu20.04
+ENV DEBIAN_FRONTEND=noninteractive
+# timezone setting
+ENV TZ=Asia/Tokyo 
+WORKDIR /tmp/
+COPY --from=0 /root/bin/ ./
+CMD ["/bin/bash"]
