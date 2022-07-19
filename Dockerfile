@@ -12,5 +12,6 @@ libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libopus-dev librtmp-d
 libx264-dev libx265-dev libxvidcore-dev libjpeg-dev
 
 ADD ff.tar.gz ./
+ADD nvcodec.tar.gz ./
 ADD build-ffmpeg.sh build-ffmpeg.sh
 RUN ./build-ffmpeg.sh
