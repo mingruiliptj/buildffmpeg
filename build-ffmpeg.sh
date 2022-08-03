@@ -24,9 +24,8 @@ ls -la
 ./configure --prefix="/tmp/ffmpeg" --disable-doc  --disable-debug --enable-small --disable-ffplay \
     --extra-cflags="-I/tmp/ffmpeg/include -I/usr/local/cuda/include" \
     --extra-ldflags="-L/tmp/ffmpeg/lib -L/usr/local/cuda/lib64"  \
-    --extra-libs=-lpthread  --extra-libs=-lm  --bindir="/root/bin" --enable-version3 \
-    --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gray --enable-libass --enable-libfreetype --enable-libfribidi --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopus --enable-librtmp --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp \
-    --enable-gpl   --enable-libx264 --enable-libx265  --enable-nonfree \
+    --extra-libs=-lpthread  --extra-libs=-lm  --bindir="/root/bin" \
+    --enable-gpl --enable-libx264 --enable-libx265 --enable-nonfree \
     --enable-cuda \
     --enable-cuvid \
     --enable-nvenc \
@@ -34,5 +33,8 @@ ls -la
     && make -j 8 && make install 
 
 
+# 
+# --enable-version3 
+# --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gray --enable-libass --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopus --enable-librtmp --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp \
 
 #   --pkg-config-flags="--static" --enable-static --disable-shared --extra-libs=-static --extra-cflags=--static \
