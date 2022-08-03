@@ -1,0 +1,1 @@
+docker exec -it ffmpegwasm0 /bin/bash

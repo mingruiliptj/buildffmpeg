@@ -1,7 +1,4 @@
-
-#!/bin/sh 
-
-set -x -v
+#!/bin/bash -x
 
 cd /tmp/ffmpeg
 pwd
@@ -46,6 +43,19 @@ emconfigure ./configure \
   --objcc=emcc \
   --dep-cc=emcc
 
-emmake make
+emmake make -j4
+# emmake make install
 
-emmake make install
+mkdir -p wasm/dist
+ARGS=(
+  -I. -I./fftools
+  -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibpostproc -Llibswscale -Llibswresample
+  -Qunused-arguments
+  -o wasm/dist/ffmpeg.js fftools/ffmpeg_opt.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/cmdutils.c fftools/ffmpeg.c
+  -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lm
+  -s USE_SDL=2                    # use SDL2
+  -s USE_PTHREADS=1               # enable pthreads support
+  -s INITIAL_MEMORY=33554432      # 33554432 bytes = 32 MB
+  -s ALLOW_MEMORY_GROWTH=1
+)
+emcc "${ARGS[@]}"
